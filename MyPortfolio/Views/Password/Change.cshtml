@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Şifre Değiştir";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Şifre Değiştir</h4>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Yeni Şifre Belirle</div>
+                    </div>
+                    <div class="card-body">
+                        @if (TempData["PasswordMessage"] != null)
+                        {
+                            <div class="alert alert-warning" role="alert">
+                                @TempData["PasswordMessage"]
+                            </div>
+                        }
+                        <div class="alert alert-info" role="alert">
+                            Şifre değiştirme özelliği şu an aktif değildir. Gerekli altyapı kurulduğunda bu bölüm işlevsel hale gelecektir.
+                        </div>
+                        <form method="post" asp-action="Change" asp-controller="Password">
+                            <fieldset disabled>
+                                @* Formu şimdilik devre dışı bırakalım *@
+                                <div class="form-group">
+                                    <label for="oldPassword">Mevcut Şifre</label>
+                                    <input type="password" class="form-control" id="oldPassword" name="OldPassword">
+                                </div>
+                                <div class="form-group">
+                                    <label for="newPassword">Yeni Şifre</label>
+                                    <input type="password" class="form-control" id="newPassword" name="NewPassword">
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirmPassword">Yeni Şifre (Tekrar)</label>
+                                    <input type="password" class="form-control" id="confirmPassword" name="ConfirmPassword">
+                                </div>
+                            </fieldset>
+                            <div class="card-action">
+                                <button type="submit" class="btn btn-primary" disabled>Şifreyi Değiştir</button> @* Butonu da devre dışı bırakalım *@
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Erişim Reddedildi";
+    Layout = null; // Veya isterseniz bir layout kullanın
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body class="text-center mt-5">
+    <h1 class="display-4 text-danger">Erişim Reddedildi</h1>
+    <p class="lead">Bu sayfaya erişim yetkiniz bulunmamaktadır.</p>
+    <a href="@Url.Action("Index", "Home")" class="btn btn-secondary">Ana Sayfaya Dön</a>
+    @* Veya login sayfasına yönlendirebilirsiniz: *@
+    @* <a href="@Url.Action("Index", "Login")" class="btn btn-primary">Giriş Yap</a> *@
+</body>
+</html>

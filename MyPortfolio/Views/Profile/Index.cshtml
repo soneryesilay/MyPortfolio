@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Profilim";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Profil Bilgileri</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Kullanıcı Bilgileri</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info" role="alert">
+                            Bu bölüm, mevcut basit kimlik doğrulama sistemiyle sınırlıdır. Profil düzenleme ve daha fazla detay için ASP.NET Core Identity gibi gelişmiş bir kullanıcı yönetim sistemi gereklidir.
+                        </div>
+                        <p><strong>Giriş Yapılan Kullanıcı Adı:</strong> @ViewBag.Username</p>
+                        @* Buraya gelecekte eklenebilecek diğer profil bilgileri için yer ayrılabilir *@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

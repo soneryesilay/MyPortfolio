@@ -1,0 +1,57 @@
+﻿@model MyPortfolio.DAL.Entities.SiteSettings
+
+@{
+    ViewData["Title"] = "Genel Ayarlar";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Genel Site Ayarları</h4>
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Site Ayarları Formu</div>
+                    </div>
+                    <div class="card-body">
+                        @if (TempData["SettingsMessage"] != null)
+                        {
+                            <div class="alert alert-success" role="alert">
+                                @TempData["SettingsMessage"]
+                            </div>
+                        }
+                        <form method="post" asp-action="Index" asp-controller="Settings">
+                            <input type="hidden" asp-for="SiteSettingsId" />
+
+                            <div class="form-group">
+                                <label asp-for="SiteTitle">Site Başlığı</label>
+                                <input type="text" class="form-control" asp-for="SiteTitle" placeholder="Web Sitenizin Başlığı">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="PublicContactEmail">Genel İletişim E-postası</label>
+                                <input type="email" class="form-control" asp-for="PublicContactEmail" placeholder="Sitede görünecek iletişim e-postası">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MetaDescription">Meta Açıklama (SEO)</label>
+                                <textarea class="form-control" asp-for="MetaDescription" rows="3" placeholder="Arama motorları için site açıklaması"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MetaKeywords">Meta Anahtar Kelimeler (SEO)</label>
+                                <input type="text" class="form-control" asp-for="MetaKeywords" placeholder="Virgülle ayrılmış anahtar kelimeler">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="FooterText">Footer Metni</label>
+                                <input type="text" class="form-control" asp-for="FooterText" placeholder="Sitenin alt kısmında görünecek yazı (örn: © 2024 İsim)">
+                            </div>
+
+                            <div class="card-action">
+                                <button type="submit" class="btn btn-primary">Ayarları Kaydet</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

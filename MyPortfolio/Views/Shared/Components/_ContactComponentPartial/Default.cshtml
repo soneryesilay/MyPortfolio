@@ -1,0 +1,109 @@
+﻿@model MyPortfolio.DAL.Entities.Contact 
+
+<section id="contact" class="s-contact target-section">
+
+    <div class="overlay"></div>
+
+    <div class="row narrow section-intro">
+        <div class="col-full">
+            <h3>İletişim</h3>
+             @if (Model != null && !string.IsNullOrEmpty(Model.Title))
+            {
+                <h1>@Model.Title</h1>
+            }
+            else
+            {
+                 <h1>Bana Ulaşın.</h1>
+            }
+
+            @if (Model != null && !string.IsNullOrEmpty(Model.Description))
+            {
+                 <p class="lead">@Html.Raw(Model.Description.Replace("\n", "<br />"))</p>
+            }
+            else
+            {
+                 <p class="lead">Aşağıdaki formu kullanarak veya iletişim bilgilerimden bana ulaşabilirsiniz.</p>
+            }
+        </div>
+    </div>
+
+    <div class="row contact__main">
+        <div class="col-eight tab-full contact__form">
+
+            @* Formun DefaultController/SendMessage'e post etmesini sağla *@
+            <form name="contactForm" id="contactForm" method="post" asp-controller="Default" asp-action="SendMessage">
+                 @Html.AntiForgeryToken() @* CSRF Koruması *@
+                <fieldset>
+
+                    <div class="form-field">
+                        @* Input name'lerini Message entity'sindeki property adlarıyla eşleştir *@
+                        <input name="Name" type="text" id="contactName" placeholder="Adınız Soyadınız" value="" minlength="2" required="required" aria-required="true" class="full-width">
+                    </div>
+                    <div class="form-field">
+                        <input name="Email" type="email" id="contactEmail" placeholder="E-posta Adresiniz" value="" required="required" aria-required="true" class="full-width">
+                    </div>
+                    <div class="form-field">
+                        <input name="Subject" type="text" id="contactSubject" placeholder="Konu" value="" class="full-width">
+                    </div>
+                    <div class="form-field">
+                        <textarea name="MessageContent" id="contactMessage" placeholder="Mesajınız" rows="10" cols="50" required="required" aria-required="true" class="full-width"></textarea>
+                    </div>
+                    <div class="form-field">
+                        <button type="submit" class="full-width btn--primary">Gönder</button>
+                        <div class="submit-loader">
+                            <div class="text-loader">Gönderiliyor...</div>
+                            <div class="s-loader">
+                                <div class="bounce1"></div>
+                                <div class="bounce2"></div>
+                                <div class="bounce3"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+
+            <!-- contact-warning -->
+             @* TempData ile kontrol edilecek *@
+            <div class="message-warning @(TempData["ErrorMessage"] != null ? "show" : "")">
+                 @TempData["ErrorMessage"] ?? "Bir hata oluştu. Lütfen tekrar deneyin."
+            </div>
+
+
+            <!-- contact-success -->
+            @* TempData ile kontrol edilecek *@
+            <div class="message-success @(TempData["SuccessMessage"] != null ? "show" : "")">
+                 @TempData["SuccessMessage"] ?? "Mesajınız gönderildi, teşekkürler!"
+            </div>
+
+
+        </div>
+        <div class="col-four tab-full contact__infos">
+            @if(Model != null)
+            {
+                <h4 class="h06">Telefon</h4>
+                <p>
+                    @if(!string.IsNullOrEmpty(Model.Phone1)) { <span>Telefon: @Model.Phone1<br></span> }
+                    @if(!string.IsNullOrEmpty(Model.Phone2)) { <span>Mobil: @Model.Phone2<br></span> }
+                </p>
+
+                <h4 class="h06">Email</h4>
+                <p>
+                    @if(!string.IsNullOrEmpty(Model.Email1)) { <a href="mailto:@Model.Email1">@Model.Email1</a><br> }
+                    @if(!string.IsNullOrEmpty(Model.Email2)) { <a href="mailto:@Model.Email2">@Model.Email2</a> }
+                </p>
+
+                <h4 class="h06">Adres</h4>
+                <p>
+                    @Html.Raw(Model.Address?.Replace("\n", "<br />"))
+                </p>
+            }
+            else
+            {
+                <p>İletişim bilgileri bulunamadı.</p>
+            }
+        </div>
+
+    </div>
+
+</section>

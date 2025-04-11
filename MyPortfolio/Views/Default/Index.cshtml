@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="tr">
+
+@await Component.InvokeAsync("_HeadComponentPartial")
+
+<body id="top">
+
+    @await Component.InvokeAsync("_NavbarComponentPartial")
+
+    @await Component.InvokeAsync("_FeatureComponentPartial")
+    
+    @await Component.InvokeAsync("_AboutComponentPartial")
+   
+    @await Component.InvokeAsync("_PortfolioComponentPartial")
+  
+    @await Component.InvokeAsync("_TestimonialComponentPartial")
+
+    @await Component.InvokeAsync("_StatisticComponentPartial")
+
+    @await Component.InvokeAsync("_ContactComponentPartial")
+
+    @await Component.InvokeAsync("_FooterComponentPartial")
+    <div aria-hidden="true" class="pswp" role="dialog" tabindex="-1"> ... </div>
+
+    <div id="preloader"> <div id="loader"></div> </div>
+    <script src="~/hola-master/js/jquery-3.2.1.min.js"></script>
+    <script src="~/hola-master/js/plugins.js"></script>
+    <script src="~/hola-master/js/main.js"></script>
+
+</body>
+
+</html>

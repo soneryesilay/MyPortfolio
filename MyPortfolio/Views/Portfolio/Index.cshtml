@@ -1,0 +1,56 @@
+﻿@model List<MyPortfolio.DAL.Entities.Portfolio>
+
+@{
+    ViewData["Title"] = "Projelerim";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Projeler</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Proje Listesi</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-sub">
+                            Projeler bölümü ile ilgili bilgileri aşağıdaki panelden yönetebilirsiniz.
+                        </div>
+                        <table class="table table-striped mt-3">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col" style="width:100px;">Görsel</th>
+                                    <th scope="col">Başlık</th>
+                                    <th scope="col">Alt Başlık</th>
+                                    <th scope="col">Url</th>
+                                    <th scope="col">Açıklama</th>
+                                    <th scope="col">Sil</th>
+                                    <th scope="col">Güncelle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.PortfolioId</td>
+                                        <td><img src="@item.ImageUrl" alt="@item.Title" style="max-width: 100px; max-height: 60px; object-fit: cover;" /></td>
+                                        <td>@item.Title</td>
+                                        <td>@item.SubTitle</td>
+                                        <td><a href="@item.Url" target="_blank">@item.Url</a></td>
+                                        <td>@item.Description</td>
+                                        <td><a href="/Portfolio/DeletePortfolio/@item.PortfolioId" class="btn btn-danger btn-sm">Sil</a></td>
+                                        <td><a href="/Portfolio/UpdatePortfolio/@item.PortfolioId" class="btn btn-success btn-sm">Güncelle</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <a href="/Portfolio/CreatePortfolio/" class="btn btn-primary">Yeni Proje Girişi</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

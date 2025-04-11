@@ -1,0 +1,42 @@
+﻿@model MyPortfolio.DAL.Entities.SocialMedia
+
+@{
+    ViewData["Title"] = "Yeni Sosyal Medya Hesabı Ekle";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Yeni Sosyal Medya Hesabı Ekle</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Sosyal Medya Formu</div>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" asp-action="CreateSocialMedia" asp-controller="SocialMedia">
+                            <div class="form-group">
+                                <label asp-for="Title">Platform Adı</label>
+                                <input type="text" class="form-control" asp-for="Title" placeholder="Örn: LinkedIn, Github, Twitter">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Icon">İkon Sınıfı</label>
+                                <input type="text" class="form-control" asp-for="Icon" placeholder="Örn: fab fa-linkedin, fab fa-github">
+                                <small class="form-text text-muted">Genellikle FontAwesome ikon sınıfları kullanılır (örn: fab fa-...).</small>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Url">Profil URL</label>
+                                <input type="url" class="form-control" asp-for="Url" placeholder="https://www.linkedin.com/in/kullaniciadi/">
+                            </div>
+                            <div class="card-action">
+                                <button type="submit" class="btn btn-primary">Kaydet</button>
+                                <a href="/SocialMedia/Index" class="btn btn-danger">İptal</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+﻿@model List<MyPortfolio.DAL.Entities.Portfolio>
+
+<section id="works" class="s-works target-section">
+
+    <div class="row narrow section-intro has-bottom-sep">
+        <div class="col-full">
+            <h3>Portfolyo</h3>
+            <h1>Son Projelerime Göz Atabilirsiniz</h1>
+
+            @* İsteğe bağlı: Buradaki açıklamayı da dinamik yapabilirsiniz (örneğin About veya Settings tablosundan) *@
+            <p class="lead">Burada yer alan projeler, üzerinde çalıştığım ve tamamladığım bazı çalışmaları göstermektedir.</p>
+        </div>
+    </div>
+
+    <div class="row masonry-wrap">
+        <div class="masonry">
+
+            @if (Model != null && Model.Any())
+            {
+                @foreach (var item in Model)
+                {
+                    <div class="masonry__brick">
+                        <div class="item-folio">
+
+                            <div class="item-folio__thumb">
+                                @* Tıklanabilir küçük resim (Lightbox için) *@
+                                <a href="@item.ImageUrl" class="thumb-link" title="@item.Title" data-size="1050x700"> @* data-size statik kalabilir veya kaldırılabilir *@
+                                    <img src="@item.ImageUrl"
+                                         @* srcset için de aynı resmi kullanalım veya sadece src kullanın *@
+                                         srcset="@item.ImageUrl 1x, @item.ImageUrl 2x" alt="@item.Title">
+                                    <span class="shadow-overlay"></span>
+                                </a>
+                            </div>
+
+                            <div class="item-folio__text">
+                                <h3 class="item-folio__title">
+                                    @item.Title @* Dinamik Başlık *@
+                                </h3>
+                                <p class="item-folio__cat">
+                                    @item.SubTitle @* Dinamik Alt Başlık/Kategori *@
+                                </p>
+                            </div>
+
+                            @* Projeye dış link (varsa) *@
+                            @if (!string.IsNullOrEmpty(item.Url))
+                            {
+                                <a href="@item.Url" target="_blank" class="item-folio__project-link" title="Projeyi Görüntüle">
+                                    <i class="im im-link"></i>
+                                </a>
+                            }
+
+                            @* Açıklama (caption) *@
+                             <div class="item-folio__caption">
+                                <p>@item.Description</p> @* Dinamik Açıklama *@
+                            </div>
+
+                        </div> <!-- end item-folio -->
+                    </div> <!-- end masonry__brick -->
+                }
+            }
+            else
+            {
+                @* Eğer hiç proje yoksa *@
+                 <div class="masonry__brick">
+                     <div class="item-folio">
+                         <div class="item-folio__text" style="text-align:center; padding: 20px;">
+                            <p>Henüz gösterilecek proje bulunmamaktadır.</p>
+                        </div>
+                     </div>
+                 </div>
+            }
+
+        </div>
+    </div> <!-- end masonry -->
+
+</section>

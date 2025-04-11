@@ -1,0 +1,71 @@
+﻿@model List<MyPortfolio.DAL.Entities.SocialMedia> 
+
+<footer>
+    <div class="row">
+        <div class="col-full">
+
+            <div class="footer-logo">
+                <a class="footer-site-logo" href="#0"><img src="~/hola-master/images/logo.png" alt="Homepage"></a>
+            </div>
+
+            @* Dinamik Sosyal Medya Linkleri (Modelden) *@
+            @if (Model != null && Model.Any()) @* Modelin boş olmadığını kontrol et *@
+            {
+                <ul class="footer-social">
+                    @foreach (var item in Model) @* Modeldeki her bir sosyal medya öğesi için dön *@
+                    {
+                        <li>
+                            <a href="@item.Url" target="_blank" title="@item.Title"> @* URL ve Title dinamik *@
+                                <i class="@item.Icon" aria-hidden="true"></i> @* İkon dinamik *@
+                                <span>@item.Title</span> @* Başlık dinamik *@
+                            </a>
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                @* Eğer sosyal medya linki yoksa bu ul hiç görünmez veya alternatif bir içerik eklenebilir *@
+                 <p>Sosyal medya linkleri bulunamadı.</p>
+            }
+
+
+        </div>
+    </div>
+
+    <div class="row footer-bottom">
+
+        <div class="col-twelve">
+            <div class="copyright">
+                @* Copyright kısmı şimdilik statik kalabilir veya SiteSettings'den alınabilir (farklı bir component/viewbag ile) *@
+                <span>© Copyright MyPortfolio @DateTime.Now.Year</span>
+                <span>Design by <a href="https://www.styleshout.com/">styleshout</a></span> @* Veya kendi tasarımcınızı yazın *@
+            </div>
+
+            <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up" aria-hidden="true"></i></a>
+            </div>
+        </div>
+
+    </div> <!-- end footer-bottom -->
+
+</footer> <!-- end footer -->
+
+@* ================================================================ *@
+@* == ÖNEMLİ UYARI == *@
+@* Aşağıdaki Photoswipe, Preloader ve JavaScript kodları *@
+@* BU VIEW COMPONENT DOSYASINDA OLMAMALIDIR! *@
+@* Bunlar genellikle projenizin ana layout dosyasında (örn: _Layout.cshtml) *@
+@* veya tüm sayfaların yüklendiği ana view dosyasında (örn: Views/Default/Index.cshtml) *@
+@* bulunmalıdır. Lütfen bu kodları buradan taşıyın! *@
+@* ================================================================ *@
+
+<!-- photoswipe background
+================================================== -->
+
+<!-- preloader -->
+
+
+
+<!-- Java Script
+================================================== -->

@@ -1,0 +1,42 @@
+﻿@model MyPortfolio.DAL.Entities.About
+
+@{
+    ViewData["Title"] = "Hakkımda Bilgisini Güncelle";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Hakkımda Bilgisini Güncelle</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Hakkımda Güncelleme Formu</div>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" asp-action="UpdateAbout" asp-controller="About">
+                            <input type="hidden" asp-for="AboutId" />
+                            <div class="form-group">
+                                <label asp-for="Title">Başlık</label>
+                                <input type="text" class="form-control" asp-for="Title" placeholder="Başlık Giriniz">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="SubDescription">Alt Açıklama</label>
+                                <input type="text" class="form-control" asp-for="SubDescription" placeholder="Alt Açıklama Giriniz">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Details">Detaylar</label>
+                                <textarea rows="5" class="form-control" asp-for="Details" placeholder="Detayları Giriniz"></textarea>
+                            </div>
+                            <div class="card-action">
+                                <button type="submit" class="btn btn-success">Güncelle</button>
+                                <a href="/About/Index" class="btn btn-danger">İptal</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

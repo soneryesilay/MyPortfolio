@@ -1,0 +1,43 @@
+﻿@model MyPortfolio.DAL.Entities.SocialMedia
+
+@{
+    ViewData["Title"] = "Sosyal Medya Hesabını Güncelle";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Sosyal Medya Hesabını Güncelle</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Sosyal Medya Güncelleme Formu</div>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" asp-action="UpdateSocialMedia" asp-controller="SocialMedia">
+                            <input type="hidden" asp-for="SocialMediaId" />
+                            <div class="form-group">
+                                <label asp-for="Title">Platform Adı</label>
+                                <input type="text" class="form-control" asp-for="Title" placeholder="Örn: LinkedIn, Github, Twitter">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Icon">İkon Sınıfı</label>
+                                <input type="text" class="form-control" asp-for="Icon" placeholder="Örn: fab fa-linkedin, fab fa-github">
+                                <small class="form-text text-muted">Genellikle FontAwesome ikon sınıfları kullanılır (örn: fab fa-...).</small>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Url">Profil URL</label>
+                                <input type="url" class="form-control" asp-for="Url" placeholder="https://www.linkedin.com/in/kullaniciadi/">
+                            </div>
+                            <div class="card-action">
+                                <button type="submit" class="btn btn-success">Güncelle</button>
+                                <a href="/SocialMedia/Index" class="btn btn-danger">İptal</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

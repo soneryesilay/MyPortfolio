@@ -1,0 +1,52 @@
+﻿@model List<MyPortfolio.DAL.Entities.Testimonial>
+
+
+    <div class="s-testimonials" id="testimonials">
+
+    <div class="overlay"></div>
+
+    <div class="row testimonials-header">
+        <div class="col-full">
+            <h1 class="h02">İnsanlar Benim İçin Ne Dediler?</h1>
+        </div>
+    </div>
+
+    <div class="row testimonials">
+
+        <div class="col-full testimonials__slider">
+
+            @if (Model != null && Model.Any()) @* Modelin boş olmadığını kontrol et *@
+            {
+                @foreach (var item in Model) @* Her bir referans için dön *@
+                {
+                    <div class="testimonials__slide">
+                        @* Dinamik Görsel *@
+                        <img src="@item.ImageUrl" alt="Referans: @item.NameSurname" class="testimonials__avatar">
+
+                        @* Dinamik Yorum *@
+                        <p>
+                            @item.Comment
+                        </p>
+
+                        @* Dinamik Yazar Bilgisi *@
+                        <div class="testimonials__author h06">
+                            @item.NameSurname
+                            <span>@item.Title</span>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                 @* Eğer hiç referans yoksa gösterilecek mesaj *@
+                 <div class="testimonials__slide">
+                      <p>Henüz gösterilecek referans bulunmamaktadır.</p>
+                 </div>
+            }
+
+
+        </div> <!-- end testimonials__slider -->
+
+    </div> <!-- end testimonials -->
+
+</div>

@@ -1,0 +1,46 @@
+﻿@model MyPortfolio.DAL.Entities.Testimonial
+
+@{
+    ViewData["Title"] = "Referans Bilgisini Güncelle";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Referans Bilgisini Güncelle</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Referans Güncelleme Formu</div>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" asp-action="UpdateTestimonial" asp-controller="Testimonial">
+                            <input type="hidden" asp-for="TestimonialId" />
+                            <div class="form-group">
+                                <label asp-for="NameSurname">Ad Soyad</label>
+                                <input type="text" class="form-control" asp-for="NameSurname" placeholder="Referans Veren Kişinin Adı Soyadı">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Title">Unvan</label>
+                                <input type="text" class="form-control" asp-for="Title" placeholder="Kişinin Unvanı veya Şirketi">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ImageUrl">Görsel URL</label>
+                                <input type="url" class="form-control" asp-for="ImageUrl" placeholder="https://ornek.com/kisi.jpg">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Comment">Yorum</label>
+                                <textarea rows="5" class="form-control" asp-for="Comment" placeholder="Referans Yorumu"></textarea>
+                            </div>
+                            <div class="card-action">
+                                <button type="submit" class="btn btn-success">Güncelle</button>
+                                <a href="/Testimonial/Index" class="btn btn-danger">İptal</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

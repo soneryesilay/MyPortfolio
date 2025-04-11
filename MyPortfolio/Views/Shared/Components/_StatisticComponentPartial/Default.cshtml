@@ -1,0 +1,41 @@
+﻿<section id="stats" class="s-stats">
+    <div class="row block-1-4 block-tab-1-2 block-mob-full stats">
+
+        @* Örnek: Yetenek Sayısı *@
+        <div class="col-block stats__col ">
+            <div class="stats__count">
+                @ViewBag.SkillCount
+            </div>
+            <h4>Toplam Yetenek</h4> @* Etiketi değiştirdik *@
+        </div>
+
+        @* Örnek: Deneyim Sayısı *@
+        <div class="col-block stats__col">
+            <div class="stats__count">
+                @ViewBag.ExperienceCount
+            </div>
+            <h4>Kayıtlı Deneyim</h4> @* Etiketi değiştirdik *@
+        </div>
+
+        @* Tamamlanan Proje Sayısı *@
+        <div class="col-block stats__col stats__col--highlight">
+            @* Vurgulu stil korunabilir *@
+            <div class="stats__upsign">
+                <a href="#works"><i class="im im-arrow-up" aria-hidden="true"></i></a> @* Linki #works (portfolyo) bölümüne yönlendirebiliriz *@
+            </div>
+            <div class="stats__count">
+                @ViewBag.ProjectCount
+            </div>
+            <h4>Tamamlanan Proje</h4> @* Etiketi değiştirdik *@
+        </div>
+
+        @* Mutlu Müşteri/Referans Sayısı *@
+        <div class="col-block stats__col">
+            <div class="stats__count">
+                @ViewBag.TestimonialCount
+            </div>
+            <h4>Referans Sayısı</h4> @* Etiketi değiştirdik *@
+        </div>
+
+    </div>
+</section>
